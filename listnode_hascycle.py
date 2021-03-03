@@ -1,3 +1,5 @@
+from datastructure.LinkedList import LinkedList, ListNode
+
 class Solution:
     def hascycle(self, head:ListNode):
         p_fast = head

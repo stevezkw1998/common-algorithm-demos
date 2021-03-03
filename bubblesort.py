@@ -1,6 +1,6 @@
 arr = [2,3,4,63,3,5,7,3,34,45,43,65]
 
-def bubbleSort(arr):
+def bubbleSort(arr):    # 时间复杂度O(n^2)
     n = len(arr)
     if n <= 1:
         return
