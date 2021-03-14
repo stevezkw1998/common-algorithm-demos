@@ -8,6 +8,7 @@ def solution(nums, k):
     print(ans2)
 
 # ------------------快速排序, 时间复杂度O(nlogn)------------------------
+# -------------最坏情况下(nums本来就有序), 时间复杂度O(n^2)--------------
 def quickselect(nums, k, left, right):
     if left == right:
         return nums[right]
@@ -33,7 +34,8 @@ def partition(nums, left, right):
     nums[left], nums[j] = nums[j], nums[left]
     return j
 
-# ------------------堆排序, 时间复杂度O(nlogn)------------------------
+# ------------------堆排序, 时间复杂度 <= O(nlogk)-------------------------
+# ---------最坏情况下(每次都要全堆heapify), 时间复杂度O(nlogk)--------------
 def heapsort(nums, k):
     #  先将前k个数变成小顶堆
     nums = heapinsert(nums, k)
