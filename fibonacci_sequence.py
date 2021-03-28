@@ -1,4 +1,5 @@
 def fibonacci(n):
+    # 时间复杂度为O(2^N)
     if n < 0:
         return "Incorrect input"
     elif n == 1:
