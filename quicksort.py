@@ -123,3 +123,37 @@ def quicksort_opt2(nums, left, right):
 nums = [23,2,4,6,2,5,1,6,13,54,8]
 quicksort_opt2(nums, 0, len(nums)-1)
 print(nums) 
+
+# ------------------------C三路快速排序-----------------------------------
+def quicksort_opt3(nums, left, right): 
+    if left >= right:
+        return
+    stack = []
+    while stack or left < right:
+        if left < right:
+            l, m, r = left, (right-left)//2, right
+            pivot = findmedian(l, m, r)
+            nums[pivot], nums[left] = nums[left], nums[pivot]
+            pivot = left
+            lt, gt = left, right + 1
+            i = left + 1
+            while i < gt:
+                if nums[i] < nums[pivot]:
+                    nums[i], nums[lt+1] = nums[lt+1], nums[i]
+                    i += 1
+                    lt += 1
+                elif nums[i] > nums[pivot]:
+                    nums[i], nums[gt-1] = nums[gt-1], nums[i] 
+                    gt -= 1
+                else:# nums[i] == nums[pivot]
+                    i += 1
+            nums[pivot], nums[lt] = nums[lt], nums[pivot] 
+            stack.append((left, lt, right))  
+            right = lt - 1
+        else:
+            left, mid, right = stack.pop()
+            left = mid + 1
+
+nums = [23,2,4,6,2,5,1,6,13,54,8]
+quicksort_opt3(nums, 0, len(nums)-1)
+print(nums) 
