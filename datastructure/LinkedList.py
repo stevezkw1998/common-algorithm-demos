@@ -132,6 +132,19 @@ class LinkedList:       # 链表类
                 head.next = head.next.next
                 return
             head = head.next
+    
+    def print(self):
+        if not self.head:
+            print("None")
+            return
+        string = ""
+        head = self.head
+        while head:
+            string += str(head.val)+"->"
+            head = head.next
+        string += "None"
+        print(string)
+
 
 l1 = LinkedList()
 l1.add(1)
