@@ -28,3 +28,34 @@ def merge(left, right):
 # 缺点：
 # 1. 需要O(n)的空间复杂度, 堆排序空间复杂度O(1), 快排O(logn)
 
+from datastructure.LinkedList import LinkedList, ListNode
+class LinkedList(LinkedList):
+    def mergesort(self):
+        if not self.head or not self.head.next:
+            return self.head
+        curr = self.head
+        for _ in range(self.size()//2):
+            curr = curr.next
+        left,right = self.head,curr.next
+        curr.next = None
+        left = left.mergesort()
+        right = right.mergesort()
+        return self.merge(left,right)
+
+    def merge(self, left, right):
+        dummy = ListNode()
+        tail = dummy
+        while left or right:
+            if not right.next:
+                tail.next = ListNode(left.val)
+                left = left.next
+            elif not left.next:
+                tail.next = ListNode(right.val)
+                right = right.next
+            elif left.val <= right.val:
+                tail.next = ListNode(left.val)
+                left = left.next
+            else:
+                tail.next = ListNode(right.val)
+                right = right.next
+        return dummy.next
