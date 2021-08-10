@@ -69,5 +69,4 @@ class LinkedList(LinkedList):
             tail = tail.next
         res = LinkedList()
         res.head = dummy.next
-        print(123)
         return res
